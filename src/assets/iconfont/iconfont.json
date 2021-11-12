@@ -1,0 +1,65 @@
+{
+  "id": "2880474",
+  "name": "no name",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "18267908",
+      "name": "饼图图表",
+      "font_class": "bingtutubiao",
+      "unicode": "e98c",
+      "unicode_decimal": 59788
+    },
+    {
+      "icon_id": "18267909",
+      "name": "处方",
+      "font_class": "chufang",
+      "unicode": "e98d",
+      "unicode_decimal": 59789
+    },
+    {
+      "icon_id": "18267911",
+      "name": "二维码",
+      "font_class": "erweima",
+      "unicode": "e98e",
+      "unicode_decimal": 59790
+    },
+    {
+      "icon_id": "18267933",
+      "name": "卖家购物车",
+      "font_class": "maijiagouwuche",
+      "unicode": "e992",
+      "unicode_decimal": 59794
+    },
+    {
+      "icon_id": "18267937",
+      "name": "管理",
+      "font_class": "guanli",
+      "unicode": "e993",
+      "unicode_decimal": 59795
+    },
+    {
+      "icon_id": "18267939",
+      "name": "平台",
+      "font_class": "pingtai",
+      "unicode": "e994",
+      "unicode_decimal": 59796
+    },
+    {
+      "icon_id": "18267947",
+      "name": "全球跨境",
+      "font_class": "quanqiukuajing",
+      "unicode": "e995",
+      "unicode_decimal": 59797
+    },
+    {
+      "icon_id": "18267953",
+      "name": "数字化",
+      "font_class": "shuzihua",
+      "unicode": "e997",
+      "unicode_decimal": 59799
+    }
+  ]
+}
