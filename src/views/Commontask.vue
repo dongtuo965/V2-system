@@ -1,79 +1,106 @@
 <template>
-  <div>
-    <el-card class="box-card">
-      <div slot="header" class="clearfix">
-        <span>数据展示</span>
+  <div class="table-wrap">
+    <div class="draggable">
+      <h4>vue基于element table表格拖拽：</h4>
+      <draggable v-model="tableData" element="tbody" :move="getmovedata" @update="datadragEnd">
+      <el-table :data="tableData" border stripe row-key="id" align="left">
+        <el-table-column
+            prop="id"
+            label="ID"
+            width="180">
+        </el-table-column>
+        <el-table-column
+            prop="userName"
+            label="姓名"
+            width="180">
+        </el-table-column>
+        <el-table-column
+            prop="age"
+            label="年龄">
+        </el-table-column>
+        <el-table-column label="操作" width="180">
+          <template slot-scope="scope">
+<!--            <el-button-->
+<!--                size="mini"-->
+<!--                @click="handleEdit(scope.row)">编辑</el-button>-->
+            <el-button
+                size="mini"
+                type="danger"
+                @click="handleDelete(scope.row, scope.$index)">删除</el-button>
+          </template>
+        </el-table-column>
+      </el-table>
+      </draggable>
+    </div>
 
-      </div>
-      <el-collapse v-model="activeNames" @change="handleChange">
-        <el-collapse-item title="一致性 Consistency" name="1">
-          <div>与现实生活一致：与现实生活的流程、逻辑保持一致，遵循用户习惯的语言和概念；</div>
-          <div>在界面中一致：所有的元素和结构需保持一致，比如：设计样式、图标和文本、元素的位置等。</div>
-        </el-collapse-item>
-        <el-collapse-item title="反馈 Feedback" name="2">
-          <div>控制反馈：通过界面样式和交互动效让用户可以清晰的感知自己的操作；</div>
-          <div>页面反馈：操作后，通过页面元素的变化清晰地展现当前状态。</div>
-        </el-collapse-item>
-        <el-collapse-item title="效率 Efficiency" name="3">
-          <div>简化流程：设计简洁直观的操作流程；</div>
-          <div>清晰明确：语言表达清晰且表意明确，让用户快速理解进而作出决策；</div>
-          <div>帮助用户识别：界面简单直白，让用户快速识别而非回忆，减少用户记忆负担。</div>
-        </el-collapse-item>
-        <el-collapse-item title="可控 Controllability" name="4">
-          <div>用户决策：根据场景可给予用户操作建议或安全提示，但不能代替用户进行决策；</div>
-          <div>结果可控：用户可以自由的进行操作，包括撤销、回退和终止当前操作等。</div>
-        </el-collapse-item>
-      </el-collapse>
-    </el-card>
+
   </div>
 </template>
 <script>
+import Sortable from 'sortablejs'
+import draggable from "vuedraggable"
+
+import {getuserinfo} from "../request/api";
+
 export default {
-  name: 'Commontask',
+  components: {
+    draggable,
+  },
   data() {
     return {
-      activeNames: ['1']
+      tableData: []
     }
-  },
-  created() {
-
   },
   mounted() {
+    this.$nextTick(()=>{
+             setTimeout(()=>{
+               this.rowDrop()
+               },100)
+           })
 
-
-  },
-  destroyed() {
-
+    this.getdata()
   },
   methods: {
-    handleChange(val) {
-      console.log(val);
-    }
+    getdata(){
+getuserinfo().then(res=>{
+  this.tableData = res.data
+    console.log(res)
+}).catch(err=>{
+    console.log(err)
+})
+    },
+    handleEdit(){
+
+    },
+    handleDelete(row, index){
+      // console.log(item.id)
+      this.tableData.splice(index,1)
+
+    },
+    getmovedata(evt) {
+      // console.log(evt.draggedContext.element.id);
+    },
+    datadragEnd(evt) {
+      /*   console.log("拖动前的索引 :" + evt.oldIndex);
+        console.log("拖动后的索引 :" + evt.newIndex);
+        console.log(this.tags); */
+    },
+// 行拖拽
+    rowDrop() {
+      // 此时找到的元素是要拖拽元素的父容器
+      const tbody = document.querySelector('.draggable .el-table__body-wrapper tbody');
+      const _this = this;
+      Sortable.create(tbody, {
+        //  指定父元素下可被拖拽的子元素
+        draggable: ".draggable .el-table__row",
+        onEnd({ newIndex, oldIndex }) {
+          const currRow = _this.tableData.splice(oldIndex, 1)[0];
+            _this.tableData.splice(currRow,0,newIndex);
+            // _this.tableData.splice(newIndex,0,currRow);
+        }
+      })
+    },
 
   }
 }
 </script>
-
-<style scoped>
-/*.text {*/
-/*    font-size: 14px;*/
-/*}*/
-
-/*.item {*/
-/*    margin-bottom: 18px;*/
-/*}*/
-
-/*.clearfix:before,*/
-/*.clearfix:after {*/
-/*    display: table;*/
-/*    content: "";*/
-/*}*/
-/*.clearfix:after {*/
-/*    clear: both*/
-/*}*/
-
-/*.box-card {*/
-/*    width: 480px;*/
-/*}*/
-
-</style>
