@@ -1,18 +1,14 @@
 <template>
   <div style="width:1920px;height:1080px;">
-    <!--    <Upload/>-->
-    <MoveTable/>
+        <Upload/>
   </div>
 </template>
 <script>
 
-
 import Upload from "../components/Upload";
-import MoveTable from "../components/MoveTable/MoveTable";
-
 export default {
   name: "Center",
-  components: {MoveTable, Upload},
+  components: {Upload},
   data() {
     return {}
   },

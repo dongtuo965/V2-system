@@ -21,6 +21,11 @@ import 'viewerjs/dist/viewer.css'
 Vue.use(dataV)
 
 Vue.use(Viewer);
+import BaiduMap from 'vue-baidu-map'
+
+Vue.use(BaiduMap, {
+    ak: 'eXZc4QuhhxKLfqQ9PIuidXFUU0M0hhzg'
+});
 // Viewer.setDefaults
 
 

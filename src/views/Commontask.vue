@@ -1,106 +1,49 @@
 <template>
-  <div class="table-wrap">
-    <div class="draggable">
-      <h4>vue基于element table表格拖拽：</h4>
-      <draggable v-model="tableData" element="tbody" :move="getmovedata" @update="datadragEnd">
-      <el-table :data="tableData" border stripe row-key="id" align="left">
-        <el-table-column
-            prop="id"
-            label="ID"
-            width="180">
-        </el-table-column>
-        <el-table-column
-            prop="userName"
-            label="姓名"
-            width="180">
-        </el-table-column>
-        <el-table-column
-            prop="age"
-            label="年龄">
-        </el-table-column>
-        <el-table-column label="操作" width="180">
-          <template slot-scope="scope">
-<!--            <el-button-->
-<!--                size="mini"-->
-<!--                @click="handleEdit(scope.row)">编辑</el-button>-->
-            <el-button
-                size="mini"
-                type="danger"
-                @click="handleDelete(scope.row, scope.$index)">删除</el-button>
-          </template>
-        </el-table-column>
-      </el-table>
-      </draggable>
-    </div>
-
-
+  <div>
+    <baidu-map class="map" :center="map.center" :zoom="map.zoom" @ready="handler">
+      <!--缩放-->
+      <bm-navigation anchor="BMAP_ANCHOR_TOP_LEFT"></bm-navigation>
+      <!--定位-->
+      <bm-geolocation anchor="BMAP_ANCHOR_BOTTOM_RIGHT" :showAddressBar="true" :autoLocation="true"></bm-geolocation>
+      <!--点-->
+      <bm-marker :position="map.center" :dragging="map.dragging" animation="BMAP_ANIMATION_DROP">
+        <!--提示信息-->
+        <bm-info-window :show="map.show">Hello world</bm-info-window>
+      </bm-marker>
+    </baidu-map>
   </div>
 </template>
+
 <script>
-import Sortable from 'sortablejs'
-import draggable from "vuedraggable"
-
-import {getuserinfo} from "../request/api";
-
 export default {
-  components: {
-    draggable,
-  },
-  data() {
-    return {
-      tableData: []
-    }
-  },
-  mounted() {
-    this.$nextTick(()=>{
-             setTimeout(()=>{
-               this.rowDrop()
-               },100)
-           })
-
-    this.getdata()
-  },
+  name: "demo",
+  data: () => ({
+    map:{
+      // center: {lng: 121.4472540000, lat: 31.3236200000},
+      center: "运城",
+      zoom: 15,
+      show: true,
+      dragging: true
+    },
+  }),
   methods: {
-    getdata(){
-getuserinfo().then(res=>{
-  this.tableData = res.data
-    console.log(res)
-}).catch(err=>{
-    console.log(err)
-})
-    },
-    handleEdit(){
-
-    },
-    handleDelete(row, index){
-      // console.log(item.id)
-      this.tableData.splice(index,1)
-
-    },
-    getmovedata(evt) {
-      // console.log(evt.draggedContext.element.id);
-    },
-    datadragEnd(evt) {
-      /*   console.log("拖动前的索引 :" + evt.oldIndex);
-        console.log("拖动后的索引 :" + evt.newIndex);
-        console.log(this.tags); */
-    },
-// 行拖拽
-    rowDrop() {
-      // 此时找到的元素是要拖拽元素的父容器
-      const tbody = document.querySelector('.draggable .el-table__body-wrapper tbody');
-      const _this = this;
-      Sortable.create(tbody, {
-        //  指定父元素下可被拖拽的子元素
-        draggable: ".draggable .el-table__row",
-        onEnd({ newIndex, oldIndex }) {
-          const currRow = _this.tableData.splice(oldIndex, 1)[0];
-            _this.tableData.splice(currRow,0,newIndex);
-            // _this.tableData.splice(newIndex,0,currRow);
-        }
+    handler ({BMap, map}) {
+      let me = this;
+      console.log(BMap, map)
+      // 鼠标缩放
+      map.enableScrollWheelZoom(true);
+      // 点击事件获取经纬度
+      map.addEventListener('click', function (e) {
+        console.log(e.point.lng, e.point.lat)
       })
-    },
-
+    }
   }
 }
 </script>
+
+<style scoped>
+.map {
+  width: 100%;
+  height: 800px;
+}
+</style>
