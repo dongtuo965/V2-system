@@ -5,6 +5,7 @@ export const getuserinfo = () => request.get('/scoreList')
 // export const GetsearchData = (params) => request.get('/list',{params})
 // post请求
 export const logininfo = (params) => request.post('/list', params)
+// export const checkcity = (params) => request.post('/list', params)
 
 
 // getuserinfo().then(res=>{

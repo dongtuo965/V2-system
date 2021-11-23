@@ -3,6 +3,7 @@
 <!--main.js里需要配置-->
 <template>
   <div>
+<!--    {{msg}}-->
     <viewer :images="images" style="height: 400px;">
       <img v-for="item in images" :src="item.src" :key="item.index" height="100" style="margin: 0 10px">
     </viewer>
@@ -13,6 +14,7 @@
 <script>
 export default {
   name: "PictureChange",
+  props:["msg"],
   data() {
     return {
       images: [

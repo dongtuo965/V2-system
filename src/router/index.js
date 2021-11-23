@@ -29,7 +29,7 @@ const routes = [
                 path: '/home',
                 name: 'home',
                 meta: {title: '首页'},
-                component: () => import('../components/Layout/Home')
+                component: () => import('../views/Home')
             },
             {
                 path: '/center',

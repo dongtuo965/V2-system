@@ -69,11 +69,18 @@ html {
 import Nav from "./components/Home/Nav";
 import Sidbar from "./components/Home/Sidbar";
 import Concent from "./components/Home/Concent";
+import PictureChange from "./components/PictureChange/PictureChange";
 
 export default {
   components: {
+    PictureChange,
     Concent,
     Sidbar, Nav
+  },
+  data(){
+    return{
+      msg:'hello world'
+    }
   }
 }
 </script>

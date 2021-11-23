@@ -1,7 +1,7 @@
 <template>
   <div class="layout">
     <el-container>
-      <el-header>
+      <el-header >
         <!--                <Hamburger class="hamburger-container" @toggleClick="toggleSideBar"/>-->
         <div style="float: left">商品后台管理系统</div>
         Header
@@ -60,7 +60,9 @@ import ScreenFull from "../ScreenFull/ScreenFull";
 export default {
   name: 'Index',
   data() {
-    return {}
+    return {
+
+    }
   },
   components: {
     ScreenFull,

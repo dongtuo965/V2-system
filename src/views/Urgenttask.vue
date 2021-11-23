@@ -38,11 +38,18 @@
             数量
             <el-input-number v-model="item.confcount" :min="1" :max="100" label="内容"
                              style="margin-left: 10px"></el-input-number>
-            <el-form-item label="单价">
-              {{ item.confprice }}
+            <el-form-item label="单价" >
+              <span contentEditable="true">{{ item.confprice }}</span>
             </el-form-item>
-            <el-form-item label="单项总价">
-              {{ item.confrowprice }}
+
+            <el-form-item label="单项总价" @click="editprice()" >
+                      <span @click="editprice()" v-if="quoted1==0">
+                         {{ item.confrowprice }}
+                  </span>
+
+              <input v-model="item.confrowprice" v-if="quoted1==1" @blur="exiteditprice()"
+                     style="width: 52px;outline:none;"></input>
+
             </el-form-item>
 
           </el-form>
@@ -64,6 +71,7 @@ export default {
   name: "Urgenttask",
   data() {
     return {
+      quoted1:0,
       allrow: {
         everyrow: [
           {
@@ -71,8 +79,8 @@ export default {
             confbrand: '',
             confmodel: '',
             confcount: '',
-            confprice: '',
-            confrowprice: '',
+            confprice: 10,
+            confrowprice: 100,
           },
         ]
       },
@@ -91,6 +99,16 @@ export default {
     }
   },
   methods: {
+    check(){
+      this.$refs.text.contentEditable = true
+    },
+    editprice(){
+      this.quoted1=1
+
+    },
+    exiteditprice(){
+      this.quoted1=0
+    },
     addrow() {
       this.allrow.everyrow.push(
           {
@@ -107,7 +125,6 @@ export default {
     removerow(item) {
       console.log(item)
       this.allrow.everyrow.pop(item, 1)
-
     },
   }
 }
