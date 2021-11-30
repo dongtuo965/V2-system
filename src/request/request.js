@@ -17,6 +17,10 @@ instace.interceptors.request.use(config => {
 
 // 响应拦截器
 instace.interceptors.response.use(res => {
+    Vue.prototype.message.error({
+        title: '网络连接超时',
+        message: '网络连接失败，请稍后再试'
+    });
     return res
 }, err => {
     return Promise.reject(err)  //返回错误

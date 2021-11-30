@@ -97,7 +97,7 @@ export default {
 <style scoped lang="scss">
 .el-menu-vertical-demo:not(.el-menu--collapse) {
   width: 200px;
-  min-height: 400px;
+  //min-height: 400px;
 }
 
 .layout {
@@ -124,19 +124,6 @@ body > .el-container {
   height: 100%;
   background: #222D3B;
   overflow: hidden !important;
-}
-
-.hamburger-container {
-  line-height: 46px;
-  height: 100%;
-  float: left;
-  cursor: pointer;
-  transition: background 0.3s;
-  -webkit-tap-highlight-color: transparent;
-
-  &:hover {
-    background: rgba(0, 0, 0, 0.025);
-  }
 }
 
 </style>
