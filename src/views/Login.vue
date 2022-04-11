@@ -21,7 +21,7 @@
     </vue-particles>
     <el-card class="conta">
       <div slot="header" class="clearfix">
-        <span>欢迎登录</span>
+        <span>主人,欢迎登录</span>
       </div>
       <el-form :model="logininfo" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
         <el-form-item label="账号" prop="account">
