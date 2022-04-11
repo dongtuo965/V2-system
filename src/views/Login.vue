@@ -77,10 +77,14 @@ export default {
       }
     },
     login() {
-      if (this.logininfo.account == 'admin' && this.logininfo.password == '123456') {
+      if(this.logininfo.account == '' || this.logininfo.password == ''){
+        return  this.$message.warning('账号或密码不能为空')
+      }else if (this.logininfo.account == 'admin' && this.logininfo.password == '123456') {
         this.$message.success('登录成功')
         sessionStorage.setItem('role', this.logininfo.account)
         this.$router.push('/usermanages')
+      }else {
+        this.$message.warning('账号或密码错误')
       }
     }
 
@@ -105,7 +109,6 @@ export default {
     //         } else {
     //             this.$message.error('用户名或密码不正确');
     //         }
-    //
     //     }).catch(err => {
     //         console.log(err)
     //     })
