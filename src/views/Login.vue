@@ -119,13 +119,13 @@ export default {
 .conta {
   width: 30rem;
   position: absolute;
-  top: 38%;
+  top: 35%;
   left: 80%;
   transform: translate(-50%, -50%);
 }
 
 #outside {
-
+  height: 100vh
 }
 
 .lizi {

@@ -253,6 +253,7 @@ export default {
       console.log(userinfo)
       this.$refs.userinfo.validate((valid) => {
         if (valid) {
+
           this.adduserdialog = false
           this.$message.success('用户添加成功')
           this.userinfo = {}

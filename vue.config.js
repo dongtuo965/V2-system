@@ -1,7 +1,7 @@
 module.exports = {
 
   devServer: {
-    port: 8849,
+    port: 8848,
     // proxy: {
     //   '/api': {
     //     target: 'http://xxxx/device/', // 对应自己的接口
