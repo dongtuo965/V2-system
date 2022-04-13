@@ -3,6 +3,16 @@ import App from './App.vue'
 import router from './router'
 import store from 'vuex'
 import * as echarts from 'echarts'
+import VueI18n from 'vue-i18n'
+
+Vue.use(VueI18n);
+const i18n = new VueI18n({
+  locale: 'zh-CN', // 将要切换的语言，可以通过url拼的参数获取，用户行为select选择获取，本地manifest配置获取等，根据场景动态获取
+  messages: {
+    'zh-CN': require('@/lang/zh.js'),  // 本地资源文件，我这里配2个语言，中文&英文，src下根据个人情况放置
+    'en-US': require('@/lang/en.js')
+  }
+});
 
 Vue.prototype.$echarts = echarts
 
@@ -34,5 +44,6 @@ Vue.use(ElementUI)
 new Vue({
     router,
     store,
+    i18n,
     render: h => h(App)
 }).$mount('#app')
