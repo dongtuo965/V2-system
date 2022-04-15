@@ -3,6 +3,9 @@ import axios from 'axios'
 const instace = axios.create({
     baseURL: 'http://localhost:8849',   //请求根路径
     timeout: 5000, //请求超时时间
+  headers:{
+
+  }
 })
 
 // 请求拦截器
