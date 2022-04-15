@@ -6,7 +6,6 @@ import Home from "../views/Home";
 import Taskmanages from "../views/Taskmanages";
 import Usermanages from "../views/Usermanages";
 import Login from "../views/Login";
-
 Vue.use(VueRouter)
 const routes = [
     {
@@ -40,8 +39,9 @@ const routes = [
             {
                 path: '/usermanages',
                 name: 'Usermanages',
-                meta: {title: '用户管理'},
+                // meta: {title: this.$t('lang.userManagers')},
                 component: () => import('../views/Usermanages.vue')
+
             },
             {
                 path: '/taskmanages',

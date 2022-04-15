@@ -7,4 +7,5 @@ export const lang = {
   firmAnalysis:'对比分析',
   firmNews:'新闻事件档案',
   firmOther:'其他功能',
+  userManagers:'用户管理',
 }

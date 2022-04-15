@@ -4,9 +4,18 @@
       <el-header >
         <!--                <Hamburger class="hamburger-container" @toggleClick="toggleSideBar"/>-->
         <div style="float: left">商品后台管理系统</div>
-        Header
+        语言切换
         <el-button type="danger" style="float: right;margin:10px" @click="gologin">退出</el-button>
-        <el-button type="success" style="float: right;margin:10px " @click="fillscreen">全屏</el-button>
+        <el-button type="success" style="float: right;margin:10px " @click="fillscreen">全屏---{{ $t('lang.firmNews') }}</el-button>
+        <el-select v-model="languageVal" placeholder="请选择语言" @change="timezonechange" style="line-height: 70px">
+          <el-option
+            v-for="item in language"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value">
+          </el-option>
+        </el-select>
+
 
       </el-header>
       <el-container>
@@ -22,7 +31,7 @@
             <el-menu-item index="/usermanages">
               <template slot="title">
                 <i class="el-icon-user"></i>
-                <span slot="title">用户管理</span>
+                <span slot="title">{{$t('lang.userManagers')}}</span>
               </template>
             </el-menu-item>
 
@@ -61,6 +70,14 @@ export default {
   name: 'Index',
   data() {
     return {
+      language: [{
+        value: '1',
+        label: '中文'
+      }, {
+        value: '2',
+        label: '英文'
+      }],
+      languageVal:'1'
 
     }
   },
@@ -70,6 +87,13 @@ export default {
     Breadcrumb
   },
   methods: {
+    timezonechange(type){
+        if (type === "1" ) {
+          this.$i18n.locale = 'zh'
+        } else if (type === "2") {
+          this.$i18n.locale = 'en'
+        }
+    },
     fillscreen() {
       // 如果不允许进入全屏，发出不允许提示
       if (!screenfull.enabled) {

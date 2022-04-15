@@ -6,5 +6,6 @@ export const lang = {
   firmIndex:'firmIndex',
   firmAnalysis:'firmAnalysis',
   firmNews:'firmNews',
-  firmOther:'firmOther'
+  firmOther:'firmOther',
+  userManagers:"userManagers"
 }
