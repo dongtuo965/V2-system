@@ -32,13 +32,16 @@
               :collapse-transition=false
               text-color="#fff"
               active-text-color="#ffd04b" router>
+            <el-menu-item index="/facilitymanager">
+              <i class="el-icon-s-platform"></i>
+              <span slot="title">设备管理</span>
+            </el-menu-item>
             <el-menu-item index="/usermanages">
               <template slot="title">
                 <i class="el-icon-user"></i>
                 <span slot="title">{{$t('lang.user.userManagers')}}</span>
               </template>
             </el-menu-item>
-
             <el-submenu index="/taskmanages">
               <template slot="title">
                 <i class="el-icon-s-data"></i>
@@ -49,10 +52,7 @@
                 <el-menu-item index="/taskmanages/commontask">普通任务</el-menu-item>
               </el-menu-item-group>
             </el-submenu>
-            <el-menu-item index="/facilitymanager">
-              <i class="el-icon-s-platform"></i>
-              <span slot="title">设备管理</span>
-            </el-menu-item>
+
             <el-menu-item index="/center">
               <i class="el-icon-s-home"></i>
               <span slot="title">个人中心</span>
