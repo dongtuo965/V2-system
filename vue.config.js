@@ -3,9 +3,9 @@ module.exports = {
     port: 8848,
     // proxy: {
     //   '/api': {
-    //     target: 'http://xxxx/device/', // 对应自己的接口
+    //     target: 'http://localhost:8848', // 对应自己的接口
     //     changeOrigin: true,
-    //     ws: true,
+    //     // ws: true,
     //     pathRewrite: {
     //       '^/api': '',
     //     },

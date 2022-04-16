@@ -1,6 +1,8 @@
 import request from './request.js';
 // get请求不传参时
-export const getuserinfo = () => request.get('/scoreList')
+export const getshebei = () => request.get('/scoreList')
+// export const getshebei = () => request.get('/shebei')
+
 // get请求传参时
 // export const GetsearchData = (params) => request.get('/list',{params})
 // post请求

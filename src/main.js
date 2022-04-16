@@ -13,6 +13,10 @@ const i18n = new VueI18n({
     'en': require('@/lang/en.js')
   }
 });
+// if (process.env.NODE_ENV == "development") {
+  require('@/mock/mock.js')
+// }
+
 Vue.prototype.$echarts = echarts
 import VueParticles from 'vue-particles'
 Vue.use(VueParticles)
@@ -34,7 +38,6 @@ Vue.use(BaiduMap, {
     ak: 'eXZc4QuhhxKLfqQ9PIuidXFUU0M0hhzg'
 });
 // Viewer.setDefaults
-
 
 Vue.config.productionTip = false
 Vue.use(ElementUI)

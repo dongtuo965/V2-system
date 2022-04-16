@@ -1,22 +1,26 @@
 <template>
   <div class="layout">
     <el-container>
-      <el-header >
+      <el-header style="display: flex;justify-content: space-between;align-items: center">
         <!--                <Hamburger class="hamburger-container" @toggleClick="toggleSideBar"/>-->
-        <div style="float: left">商品后台管理系统</div>
-        语言切换
-        <el-button type="danger" style="float: right;margin:10px" @click="gologin">退出</el-button>
-        <el-button type="success" style="float: right;margin:10px " @click="fillscreen">全屏---{{ $t('lang.firmNews') }}</el-button>
-        <el-select v-model="languageVal" placeholder="请选择语言" @change="timezonechange" style="line-height: 70px">
-          <el-option
-            v-for="item in language"
-            :key="item.value"
-            :label="item.label"
-            :value="item.value">
-          </el-option>
-        </el-select>
+        <div >商品后台管理系统</div>
+        <div>
+          {{ $t('lang.header.languageSwitch') }} :&nbsp;&nbsp;&nbsp;<el-select v-model="languageVal" placeholder="请选择语言" @change="timezonechange" style="line-height: 70px">
+        <el-option
+          v-for="item in language"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value">
+        </el-option>
+      </el-select>
+        </div>
 
+        <div style="display: flex">
+          <AllShowTime/>
+          <el-button type="success" style="margin:10px " @click="fillscreen">{{ $t('lang.header.fullScreen') }}</el-button>
+        <el-button type="danger" style="margin:10px" @click="gologin">{{ $t('lang.header.exit') }} </el-button>
 
+        </div>
       </el-header>
       <el-container>
         <el-aside width="200px">
@@ -31,7 +35,7 @@
             <el-menu-item index="/usermanages">
               <template slot="title">
                 <i class="el-icon-user"></i>
-                <span slot="title">{{$t('lang.userManagers')}}</span>
+                <span slot="title">{{$t('lang.user.userManagers')}}</span>
               </template>
             </el-menu-item>
 
@@ -45,12 +49,15 @@
                 <el-menu-item index="/taskmanages/commontask">普通任务</el-menu-item>
               </el-menu-item-group>
             </el-submenu>
+            <el-menu-item index="/facilitymanager">
+              <i class="el-icon-s-platform"></i>
+              <span slot="title">设备管理</span>
+            </el-menu-item>
             <el-menu-item index="/center">
-              <i class="el-icon-s-custom"></i>
+              <i class="el-icon-s-home"></i>
               <span slot="title">个人中心</span>
             </el-menu-item>
           </el-menu>
-
         </el-aside>
         <el-main>
           <Breadcrumb/>
@@ -64,6 +71,7 @@
 import screenfull from "screenfull";
 import Breadcrumb from '../Breadcrumb/Breadcrumb'
 import Hamburger from "../Hamburger/Hamburger"
+import AllShowTime from "../AllShowTime/AllShowTime"
 import ScreenFull from "../ScreenFull/ScreenFull";
 
 export default {
@@ -83,6 +91,7 @@ export default {
   },
   components: {
     ScreenFull,
+    AllShowTime,
     Hamburger,
     Breadcrumb
   },

@@ -36,6 +36,12 @@ const routes = [
                 meta: {title: '个人中心'},
                 component: () => import('../views/Center.vue')
             },
+          {
+            path: '/facilitymanager',
+            name: 'FacilityManager',
+            meta: {title: '设备管理'},
+            component: () => import('../views/FacilityManager.vue')
+          },
             {
                 path: '/usermanages',
                 name: 'Usermanages',
