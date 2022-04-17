@@ -61,7 +61,9 @@
         :before-close="handleClose"
         width="30%">
         <el-form :inline="true" :model="userinfo" class="demo-form-inline" :rules="rules" ref="userinfo">
-
+          <el-form-item label="ID" prop="id">
+            <el-input v-model="userinfo.id" placeholder="请输入内容" size="small"></el-input>
+          </el-form-item>
           <el-form-item label="设备类型" prop="type">
             <el-select v-model="userinfo.type" placeholder="请选择设备类型" size="small" style="width: 100%">
               <el-option
@@ -91,6 +93,9 @@
         width="30%">
         <el-form :inline="true" :model="edituserinfo" class="demo-form-inline">
 
+          <el-form-item label="ID" prop="id">
+            <el-input v-model="edituserinfo.id" placeholder="请输入内容" size="small"></el-input>
+          </el-form-item>
           <el-form-item label="设备类型">
             <el-select v-model="edituserinfo.type" placeholder="请选择设备类型" size="small" style="width: 100%">
               <el-option
@@ -108,7 +113,7 @@
         </el-form>
         <span slot="footer" class="dialog-footer">
     <el-button @click="edituserdialog = false,edituserinfo={}">取 消</el-button>
-    <el-button type="primary" @click="edituser">确 定</el-button>
+    <el-button type="primary" @click="edituser(edituserinfo)">确 定</el-button>
   </span>
       </el-dialog>
     </el-card>
@@ -125,41 +130,46 @@
         edituserdialog: false,
         delmanyarr: [],
         tableData: [{
+          id:1,
           name: "显示屏",
           userdate: "2022-4-16"
         },
           {
+            id:2,
             name: "键盘",
             userdate: "2022-4-18"
           },
           {
+            id:3,
             name: "CPU",
             userdate: "2022-4-18"
           }
         ],
         options: [{
-          value: '1',
+          value: '显示屏',
           label: '显示屏'
         }, {
-          value: '2',
+          value: '显卡',
           label: '显卡'
         }],
         total: 0,
         currentPage: 1,
         tiaoshu: 10,
         rules: {
-          type: [
-            {required: true, message: '请选择设备类型', trigger: 'change'}
-          ],
-          createtime: [
-            {required: true, message: '请输入创建时间', trigger: 'blur'},
-          ]
+        //   type: [
+        //     {required: true, message: '请选择设备类型', trigger: 'change'}
+        //   ],
+        //   createtime: [
+        //     {required: true, message: '请输入创建时间', trigger: 'blur'},
+        //   ]
         },
         edituserinfo: {
+          id:'',
           type: '',
           createtime: '',
         },
         userinfo: {
+          id:'',
           type: '',
           createtime: '',
         }
@@ -226,7 +236,6 @@
       // 切换页数
       handleCurrentChange(val) {
         this.currentPage = val
-
         console.log(`当前页: ${val}`);
       },
       // 点弹框X时要做的事情
@@ -235,8 +244,7 @@
         this.userinfo = {}
       },
       //添加设备弹框确定按钮
-      adduser(userinfo) {
-        console.log(userinfo)
+      adduser() {
         this.$refs.userinfo.validate((valid) => {
           if (valid) {
             this.adduserdialog = false
@@ -247,7 +255,15 @@
         })
       },
       //编辑设备弹框确定按钮
-      edituser() {
+      edituser(val) {
+        console.log(val)
+        this.tableData.forEach((item,i)=>{
+          if(item.id == this.edituserinfo.id){
+            item.name = this.edituserinfo.type
+            item.userdate = this.edituserinfo.createtime
+          }
+
+        })
         // this.tableData[i].name = this.edituserinfo.type
         // this.tableData[i].userdate = this.edituserinfo.createtime
         this.edituserdialog = false
