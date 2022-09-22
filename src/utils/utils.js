@@ -15,7 +15,7 @@ function checkUrl(url) {
 
 //mac地址正则表达式
 function macCheck(url){
-  var reg_name=/[A-F\d]{2}-[A-F\d]{2}-[A-F\d]{2}-[A-F\d]{2}-[A-F\d]{2}-[A-F\d]{2}/;
+  var reg_name=/^[A-F0-9]{2}([-:]?[A-F0-9]{2})([-:.]?[A-F0-9]{2})([-:]?[A-F0-9]{2})([-:.]?[A-F0-9]{2})([-:]?[A-F0-9]{2})$/
   if(!reg_name.test(url)){
     alert("mac地址格式不正确！mac地址格式为00-24-21-19-BD-E4");
     return false;
