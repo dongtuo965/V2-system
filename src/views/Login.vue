@@ -30,6 +30,7 @@
         <el-form-item label="密码" prop="password">
           <el-input v-model.trim="logininfo.password" placeholder="请输入密码" type="password"></el-input>
         </el-form-item>
+<!--        {{$md5(logininfo.password)}}-->
         <el-form-item>
           <el-button type="primary" @click="login('ruleForm')" @keyup.enter="keyDown">登录</el-button>
         </el-form-item>
@@ -46,8 +47,8 @@ export default {
   data() {
     return {
       logininfo: {
-        account: '',
-        password: ''
+        account: 'admin',
+        password: '123456'
       },
       rules: {
         account: [

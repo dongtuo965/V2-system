@@ -45,7 +45,7 @@ export default {
 
 <style scoped>
 .breadcrumb {
-  margin: 0 0 10px 0;
+  margin: 20px;
 
 }
 </style>

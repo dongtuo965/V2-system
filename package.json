@@ -13,6 +13,7 @@
     "core-js": "^3.6.5",
     "echarts": "^5.2.1",
     "element-ui": "^2.15.6",
+    "js-md5": "^0.7.3",
     "jsonp": "^0.2.1",
     "mockjs": "^1.1.0",
     "screenfull": "^4.2.0",

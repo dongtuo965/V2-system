@@ -5,6 +5,9 @@ import store from 'vuex'
 import * as echarts from 'echarts'
 import VueI18n from 'vue-i18n'
 
+import md5 from 'js-md5'
+Vue.prototype.$md5 = md5
+
 Vue.use(VueI18n);
 const i18n = new VueI18n({
   locale: 'zh', // 将要切换的语言，可以通过url拼的参数获取，用户行为select选择获取，本地manifest配置获取等，根据场景动态获取
