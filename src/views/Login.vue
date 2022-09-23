@@ -65,10 +65,6 @@ export default {
   },
   mounted() {
     window.addEventListener('keydown', this.keyDown);
-    console.log(996)
-    alert('我是远程')
-
-
   },
   destroyed() {
     window.removeEventListener('keydown', this.keyDown, false);
